@@ -36,6 +36,12 @@ a {
   padding: 0 1rem;
   z-index: 11;
 }
+.local-nav-sticky .local-nav {
+  position: fixed;
+  top: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(180%) blur(15px);
+}
 .global-nav-links,
 .local-nav-links {
   display: flex;
@@ -105,6 +111,12 @@ a {
   font-size: 3rem;
   color: rgb(29, 29, 31);
 }
+.sticky-elem {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100%;
+}
 .desc-message {
   font-weight: bold;
   width: 50%;
@@ -138,7 +150,7 @@ a {
   padding: 0 1rem;
   font-size: 1.2rem;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: -8em auto 0;
 }
 .footer {
   display: flex;
@@ -153,12 +165,6 @@ a {
   display: inline-block;
   padding-left: 5px;
   text-decoration: underline;
-}
-.sticky-elem {
-  display: none;
-  position: fixed;
-  left: 0;
-  width: 100%;
 }
 #show-scene-0 #scroll-section-0 .sticky-elem,
 #show-scene-1 #scroll-section-1 .sticky-elem,
@@ -215,9 +221,12 @@ a {
     left: 55%;
   }
   .mid-message {
+    width: 1000px;
+    padding: 0;
     font-size: 4vw;
   }
   .canvas-caption {
     font-size: 2rem;
+    padding: 0;
   }
 }

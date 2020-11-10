@@ -144,3 +144,9 @@ button {
   background: transparent;
   cursor: pointer;
 }
+/* body {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+} */
