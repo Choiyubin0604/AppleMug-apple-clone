@@ -17,6 +17,16 @@ a {
   color: rgb(29, 29, 31);
   text-decoration: none;
 }
+.before-load .container {
+  display: none;
+}
+body.before-load {
+  overflow: hidden;
+}
+.container {
+  /* iphone 가로 스크롤 방지 */
+  overflow-x: hidden;
+}
 .global-nav {
   position: absolute;
   top: 0;
@@ -40,6 +50,9 @@ a {
   position: fixed;
   top: 0;
   background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: saturate(180%) blur(15px);
+  -moz-backdrop-filter: saturate(180%) blur(15px);
+  -o-backdrop-filter: saturate(180%) blur(15px);
   backdrop-filter: saturate(180%) blur(15px);
 }
 .global-nav-links,
@@ -150,7 +163,7 @@ a {
   padding: 0 1rem;
   font-size: 1.2rem;
   max-width: 1000px;
-  margin: -8em auto 0;
+  margin: -24rem auto 0;
 }
 .footer {
   display: flex;
@@ -273,6 +286,7 @@ a {
     font-size: 4vw;
   }
   .canvas-caption {
+    margin-top: -8rem;
     font-size: 2rem;
     padding: 0;
   }

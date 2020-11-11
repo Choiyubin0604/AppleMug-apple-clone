@@ -13,7 +13,7 @@
         //0
         {
             type : 'sticky',
-            heightNum: 6, //브라우저 높이의 5배로 scrollHeight 세팅
+            heightNum: 5, //브라우저 높이의 5배로 scrollHeight 세팅
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-0'),
@@ -50,7 +50,7 @@
         //1
         {
             type : 'normal',
-            heightNum: 6, //브라우저 높이의 5배로 scrollHeight 세팅
+            //heightNum: 5, //브라우저 높이의 5배로 scrollHeight 세팅
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-1')
@@ -59,7 +59,7 @@
         //2
         {
             type : 'sticky',
-            heightNum: 6, //브라우저 높이의 5배로 scrollHeight 세팅
+            heightNum: 5, //브라우저 높이의 5배로 scrollHeight 세팅
             scrollHeight:0,
             objs: {
                 container: document.querySelector('#scroll-section-2'),
@@ -504,32 +504,56 @@
     }
 
     
-    window.addEventListener('scroll', () => {
-        yOffset = window.pageYOffset;
-        scrollLoop();
-        checkMenu();
-
-        if (!rafState) {
-            rafId = requestAnimationFrame(loop);
-            rafState = true;
-        }
-    });
+    
 
     window.addEventListener('load', () => {
         document.body.classList.remove('before-load');
         setLayout();
         sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
-    });
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 600 ) {
-            setLayout();
+
+        let tempYOffset = yOffset;
+        let tempScrollCount = 0;
+        if (yOffset > 0) {
+            let siId =
+            setInterval(() => {
+            window.scrollTo(0, tempYOffset);
+            tempYOffset += 2;
+            if(tempScrollCount > 10 ) {
+                clearInterval(siId);
+            }
+            tempScrollCount++;
+        }, 20)
         }
-        sceneInfo[3].values.rectStartY = 0; //초기화
+
+
+        window.addEventListener('scroll', () => {
+            yOffset = window.pageYOffset;
+            scrollLoop();
+            checkMenu();
+     
+            if (!rafState) {
+                rafId = requestAnimationFrame(loop);
+                rafState = true;
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 ) {
+                setLayout();
+                sceneInfo[3].values.rectStartY = 0; //초기화
+            }
+        });
+
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setLayout, 500)
+        } );
+
+        document.querySelector('.loading').addEventListener('transitionend', (e) => {
+            document.body.removeChild(e.currentTarget)
+        })
+
     });
-    window.addEventListener('orientationchange', setLayout );
-    document.querySelector('.loading').addEventListener('transitionend', (e) => {
-        document.body.removeChild(e.currentTarget)
-    })
+    
     
     setCanvasImages();
 
