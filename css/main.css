@@ -185,6 +185,9 @@ body.before-load {
 #show-scene-3 #scroll-section-3 .sticky-elem {
   display: block;
 }
+.scroll-effect-end .sticky-elem {
+  display: none !important;
+}
 .sticky-elem-canvas {
   top: 0;
   height: 100%;
@@ -249,6 +252,9 @@ body.before-load {
   stroke-dasharray: 157;
   stroke-dashoffset: 0;
   animation: loading-circle-ani 1s infinite;
+}
+.normal-content {
+  margin-bottom: 10rem;
 }
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
